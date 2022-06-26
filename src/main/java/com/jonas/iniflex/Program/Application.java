@@ -4,6 +4,8 @@ import com.jonas.iniflex.Entities.Funcionario;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -33,6 +35,7 @@ public class Application {
         Funcionario heloisa = new Funcionario("Heloisa", sdf.parse("24/05/2003"), 1606.85, "Eletricista");
         Funcionario helena = new Funcionario("Helena", sdf.parse("02/09/1996"), 2799.93, "Gerente");
 
+        //3.1 ADD TODOS OS FUNCIONARIOS 
         listaFuncionario.add(joao);
         listaFuncionario.add(maria);
         listaFuncionario.add(caio);
@@ -44,49 +47,61 @@ public class Application {
         listaFuncionario.add(heloisa);
         listaFuncionario.add(helena);
 
-        //Remove Joao
+        //3.2 REMOVE FUNCIONARIO JOAO
         listaFuncionario.remove(joao);
 
-        //Imprimir a lista
+        //3.3 IMPRESSAO LISTA
         for (Funcionario lista : listaFuncionario) {
             System.out.println(lista.getNome() + " " + sdf.format(lista.getDataNascimento()) + " " + String.format("%.2f", lista.getSalario()) + " " + lista.getFuncao() + " .");
         }
         System.out.println("*****************************************************");
 
-        //Aumento de  10% ao funcionario
+        //3.4 AUMENTO DE 10% AO FUNCIONARIO 
         for (Funcionario lista : listaFuncionario) {
             if (lista.getSalario() > 0) {
                 lista.setSalario(lista.getSalario() + ((lista.getSalario() * 10) / 100));
             }
         }
+        System.out.println("*********************************************");
 
-        //Agrupando os funcionarios por MAP
-//        Map<String, Funcionario> listaMap = new LinkedHashMap<>();
-//        for (Funcionario lista : listaFuncionario) {
-//            listaMap.put(lista.getFuncao(), lista);
-//        }
+        //3.5 AGRUPANDO OS FUNCIONARIOS POR MAP
         Map<String, Funcionario> listaMap = new LinkedHashMap<>();
         for (Funcionario lista : listaFuncionario) {
             listaMap.put(lista.getFuncao(), lista);
         }
 
-//        for (Funcionario lista : listaFuncionario) {
-//            System.out.println(lista);
-//        }
-        System.out.println("*********************************");
-
         for (String key : listaMap.keySet()) {
             System.out.println(key + ": " + listaMap.get(key));
         }
+        System.out.println("*********************************************");
 
-        System.out.println("********************************");
         //3.10 LISTA FUNCIONARIO ORDEM ALFABETICA
-        Stream<Funcionario> st1 = listaFuncionario.stream();
-        List<String> names = listaFuncionario.stream()
+        System.out.println("Ordem Alfabetica");
+        Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
+
+        List<String> listaOrdemAlfabetica = listaFuncionario.stream()
                 .map(p -> p.getNome())
+                .sorted(comp)
                 .collect(Collectors.toList());
 
-        names.forEach(System.out::println);
+        listaOrdemAlfabetica.forEach(System.out::println);
+        System.out.println("*********************************************");
+
+        //3.11 TOTAL DOS SALARIOS DOS FUNCIONARIOS
+        double salarioTotal = listaFuncionario.stream()
+                .map(p -> p.getSalario())
+                .reduce(0.0, (x, y) -> x + y);
+        System.out.println("O total dos salarios dos funcionarios eh: " + String.format("%.2f$ ", salarioTotal));
+        System.out.println("*********************************************");
+
+        //3.12 Quantos salarios minimo ganha cada funcionario
+        double salarioMinimo = 1212.00;
+        double calcSalarioMinimo = 0.00;
+        for (Funcionario lista : listaFuncionario) {
+            calcSalarioMinimo = lista.getSalario() / 1212.00;
+            System.out.println("O Funcionario " + lista.getNome() + " recebe " + String.format("%.2f", calcSalarioMinimo) + " salarios minimos");
+        }
+        System.out.println("*********************************************");
 
     }
 
