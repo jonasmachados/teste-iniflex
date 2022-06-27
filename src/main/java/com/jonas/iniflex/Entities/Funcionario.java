@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Funcionario extends Pessoa {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     private Double salario;
     private String funcao;
@@ -25,16 +26,15 @@ public class Funcionario extends Pessoa {
     public String toString() {
         return getNome()
                 + ", " + sdf.format(getDataNascimento())
-                + ", " + salario
+                + ", " + String.format("%,.2f",salario)
                 + ", " + funcao;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.sdf);
-        hash = 97 * hash + Objects.hashCode(this.salario);
-        hash = 97 * hash + Objects.hashCode(this.funcao);
+        hash = 23 * hash + Objects.hashCode(this.salario);
+        hash = 23 * hash + Objects.hashCode(this.funcao);
         return hash;
     }
 
@@ -53,16 +53,11 @@ public class Funcionario extends Pessoa {
         if (!Objects.equals(this.funcao, other.funcao)) {
             return false;
         }
-        if (!Objects.equals(this.sdf, other.sdf)) {
-            return false;
-        }
         if (!Objects.equals(this.salario, other.salario)) {
             return false;
         }
         return true;
     }
-
-  
 
     public double aumento10(double _10PorCento) {
         return salario = salario + ((salario * 10) / 100);
