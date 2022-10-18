@@ -24,10 +24,8 @@ public class Funcionario extends Pessoa {
 
     @Override
     public String toString() {
-        return getNome()
-                + ", " + sdf.format(getDataNascimento())
-                + ", " + String.format("%,.2f",salario)
-                + ", " + funcao;
+        return getNome();
+        
     }
 
     @Override
