@@ -11,6 +11,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -30,13 +31,19 @@ public class Service {
         this.listaFuncionario = listaFuncionario;
     }
 
-    public List<Funcionario> addFuncionario(Funcionario obj) {
+    public List<Funcionario> addFuncionario(String nome, Date dataNascimento, BigDecimal salario, String funcao) {
+        Funcionario obj = new Funcionario(nome, dataNascimento, salario, funcao);
         listaFuncionario.add(obj);
         return listaFuncionario;
     }
 
-    public List<Funcionario> removeFuncionario(Funcionario obj) {
-        listaFuncionario.remove(obj);
+    public List<Funcionario> removeFuncionario(String nome) {
+        for (int i = 0; i < listaFuncionario.size(); i++) {
+            if (listaFuncionario.get(i).getNome() == nome) {
+                listaFuncionario.remove(listaFuncionario.get(i));
+            }
+
+        }
         return listaFuncionario;
     }
 

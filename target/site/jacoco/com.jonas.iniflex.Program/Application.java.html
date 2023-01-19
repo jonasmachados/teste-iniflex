@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Application.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste Iniflex</a> &gt; <a href="index.source.html" class="el_package">com.jonas.iniflex.Program</a> &gt; <span class="el_source">Application.java</span></div><h1>Application.java</h1><pre class="source lang-java linenums">package com.jonas.iniflex.Program;
+
+import com.jonas.iniflex.Services.Service;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+<span class="nc" id="L8">public class Application {</span>
+
+    public static void main(String[] args) {
+
+<span class="fc" id="L12">        Service service = new Service();</span>
+
+<span class="fc" id="L14">        SimpleDateFormat sdf = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+
+        try {
+            //3.1 ADD TODOS OS FUNCIONARIOS 
+<span class="fc" id="L18">            service.addFuncionario(&quot;Maria&quot;, sdf.parse(&quot;18/10/2000&quot;), BigDecimal.valueOf(2009.44), &quot;Operador&quot;);</span>
+<span class="fc" id="L19">            service.addFuncionario(&quot;Joao&quot;, sdf.parse(&quot;12/05/1990&quot;), BigDecimal.valueOf(2284.38), &quot;Operador&quot;);</span>
+<span class="fc" id="L20">            service.addFuncionario(&quot;Caio&quot;, sdf.parse(&quot;02/05/1961&quot;), BigDecimal.valueOf(9836.14), &quot;Coordenador&quot;);</span>
+<span class="fc" id="L21">            service.addFuncionario(&quot;Miguel&quot;, sdf.parse(&quot;14/10/1988&quot;), BigDecimal.valueOf(19119.88), &quot;Diretor&quot;);</span>
+<span class="fc" id="L22">            service.addFuncionario(&quot;Alice&quot;, sdf.parse(&quot;05/01/1995&quot;), BigDecimal.valueOf(2234.68), &quot;Recepcionista&quot;);</span>
+<span class="fc" id="L23">            service.addFuncionario(&quot;Heitor&quot;, sdf.parse(&quot;19/11/1999&quot;), BigDecimal.valueOf(1582.72), &quot;Operador&quot;);</span>
+<span class="fc" id="L24">            service.addFuncionario(&quot;Arthur&quot;, sdf.parse(&quot;31/03/1993&quot;), BigDecimal.valueOf(4071.84), &quot;Contador&quot;);</span>
+<span class="fc" id="L25">            service.addFuncionario(&quot;Laura&quot;, sdf.parse(&quot;08/07/1994&quot;), BigDecimal.valueOf(3017.45), &quot;Gerente&quot;);</span>
+<span class="fc" id="L26">            service.addFuncionario(&quot;Heloisa&quot;, sdf.parse(&quot;24/05/2003&quot;), BigDecimal.valueOf(1606.85), &quot;Eletricista&quot;);</span>
+<span class="fc" id="L27">            service.addFuncionario(&quot;Helena&quot;, sdf.parse(&quot;02/09/1996&quot;), BigDecimal.valueOf(2799.93), &quot;Gerente&quot;);</span>
+
+            //3.2 REMOVER FUNCIONARIO JOAO
+<span class="fc" id="L30">            service.removeFuncionario(&quot;Joao&quot;);</span>
+
+            //3.3 IMPRESSAO LISTA
+<span class="fc" id="L33">            service.listaTodosFuncionario();</span>
+<span class="fc" id="L34">            System.out.println(&quot;\n***********************************&quot;);</span>
+
+            //3.4 AUMENTO DE 10% AO FUNCIONARIO 
+<span class="fc" id="L37">            service.aumentoSalarioTodosFuncionarios(10);</span>
+
+            //3.5-3.6 AGRUPANDO OS FUNCIONARIOS POR MAP E IMPRIMINDO POR FUNCAO
+<span class="fc" id="L40">            service.funcionariosMap();</span>
+<span class="fc" id="L41">            System.out.println(&quot;\n***********************************&quot;);</span>
+
+            // 3.08 FUNCIONARIOS ANIVERSARIANTES NO MES 10 E 12
+<span class="fc" id="L44">            service.aniversariantesMes10E12();</span>
+<span class="fc" id="L45">            System.out.println(&quot;\n***********************************&quot;);</span>
+
+            //3.09 FUNCIONARIO COM A MAIOR IDADE 
+<span class="fc" id="L48">            service.funcionarioMaisVelho();</span>
+<span class="fc" id="L49">            System.out.println(&quot;\n***********************************&quot;);</span>
+
+            //3.10 LISTA FUNCIONARIO ORDEM ALFABETICA
+<span class="fc" id="L52">            service.listaFuncionariosOrdemAlfabetica();</span>
+
+            //3.11 TOTAL DOS SALARIOS DOS FUNCIONARIOS
+<span class="fc" id="L55">            System.out.println(&quot;O total dos salarios dos funcionarios eh: &quot; + String.</span>
+<span class="fc" id="L56">                    format(&quot;%,.2f &quot;, service.totalSalarioDosFuncionarios()));</span>
+<span class="fc" id="L57">            System.out.println(&quot;\n***********************************&quot;);</span>
+
+            //3.12 LISTA QTD SALARIO MINIMO POR FUNCIONARIO
+<span class="fc" id="L60">            service.listaQtdSalarioMinimoPorFuncionario();</span>
+            
+<span class="nc" id="L62">        } catch (ParseException e) {</span>
+<span class="nc" id="L63">            System.out.println(&quot;ParseException: &quot; + e.getMessage());</span>
+<span class="fc" id="L64">        }</span>
+
+<span class="fc" id="L66">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

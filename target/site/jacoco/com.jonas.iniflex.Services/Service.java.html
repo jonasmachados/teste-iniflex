@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Service.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Teste Iniflex</a> &gt; <a href="index.source.html" class="el_package">com.jonas.iniflex.Services</a> &gt; <span class="el_source">Service.java</span></div><h1>Service.java</h1><pre class="source lang-java linenums">package com.jonas.iniflex.Services;
+
+import com.jonas.iniflex.Entities.Funcionario;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+<span class="fc" id="L19">public class Service {</span>
+
+<span class="fc" id="L21">    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L22">    SimpleDateFormat sdf = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+
+<span class="fc" id="L24">    List&lt;Funcionario&gt; listaFuncionario = new ArrayList&lt;&gt;();</span>
+
+    public List&lt;Funcionario&gt; getListaFuncionario() {
+<span class="nc" id="L27">        return listaFuncionario;</span>
+    }
+
+    public void setListaFuncionario(List&lt;Funcionario&gt; listaFuncionario) {
+<span class="nc" id="L31">        this.listaFuncionario = listaFuncionario;</span>
+<span class="nc" id="L32">    }</span>
+
+    public List&lt;Funcionario&gt; addFuncionario(String nome, Date dataNascimento, BigDecimal salario, String funcao) {
+<span class="fc" id="L35">        Funcionario obj = new Funcionario(nome, dataNascimento, salario, funcao);</span>
+<span class="fc" id="L36">        listaFuncionario.add(obj);</span>
+<span class="fc" id="L37">        return listaFuncionario;</span>
+    }
+
+    public List&lt;Funcionario&gt; removeFuncionario(String nome) {
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        for (int i = 0; i &lt; listaFuncionario.size(); i++) {</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">            if (listaFuncionario.get(i).getNome() == nome) {</span>
+<span class="fc" id="L43">                listaFuncionario.remove(listaFuncionario.get(i));</span>
+            }
+
+        }
+<span class="fc" id="L47">        return listaFuncionario;</span>
+    }
+
+    public void listaTodosFuncionario() {
+<span class="fc" id="L51">        System.out.println(&quot;Lista de todos os Funcioanarios:&quot;);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for (int i = 0; i &lt; listaFuncionario.size(); i++) {</span>
+<span class="fc" id="L53">            System.out.println(listaFuncionario.get(i));</span>
+        }
+<span class="fc" id="L55">    }</span>
+
+    public List&lt;Funcionario&gt; aumentoSalarioTodosFuncionarios(Integer porcentagem) {
+<span class="fc" id="L58">        BigDecimal porctSalario = new BigDecimal(&quot;0&quot;);</span>
+<span class="fc" id="L59">        BigDecimal salSum = new BigDecimal(&quot;0&quot;);</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        for (Funcionario lista : listaFuncionario) {</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">            if (lista.getSalario().compareTo(new BigDecimal(&quot;0&quot;)) == 1) {</span>
+<span class="fc" id="L62">                porctSalario = (lista.getSalario().multiply(new BigDecimal(porcentagem))).divide(new BigDecimal(&quot;100&quot;));</span>
+<span class="fc" id="L63">                salSum = lista.getSalario().add(porctSalario);</span>
+<span class="fc" id="L64">                lista.setSalario(salSum);</span>
+            }
+<span class="fc" id="L66">        }</span>
+<span class="fc" id="L67">        return listaFuncionario;</span>
+    }
+
+    public void funcionariosMap() {
+<span class="fc" id="L71">        Map&lt;String, List&lt;Funcionario&gt;&gt; groupFunc</span>
+<span class="fc" id="L72">                = listaFuncionario.stream()</span>
+<span class="fc" id="L73">                        .collect(Collectors.groupingBy(h -&gt; h.getFuncao()));</span>
+
+<span class="fc" id="L75">        System.out.println(&quot;Funcionários agrupados por função.&quot;);</span>
+<span class="fc" id="L76">        groupFunc.keySet().forEach(key -&gt; {</span>
+<span class="fc" id="L77">            System.out.println(key + &quot;: &quot; + groupFunc.get(key));</span>
+<span class="fc" id="L78">        });</span>
+<span class="fc" id="L79">    }</span>
+
+    public void aniversariantesMes10E12() {
+<span class="fc" id="L82">        System.out.println(&quot;Aniversariantes dos meses outubro e dezembro&quot;);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        for (Funcionario lista : listaFuncionario) {</span>
+<span class="fc" id="L84">            LocalDate month = lista.getDataNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();</span>
+<span class="pc bpc" id="L85" title="1 of 4 branches missed.">            if (month.getMonthValue() == 10 || month.getMonthValue() == 12) {</span>
+<span class="fc" id="L86">                System.out.println(lista);</span>
+            }
+<span class="fc" id="L88">        }</span>
+<span class="fc" id="L89">    }</span>
+
+    public void funcionarioMaisVelho() {
+<span class="fc" id="L92">        String idadeInicial = new String(&quot;01/01/1900&quot;);</span>
+<span class="fc" id="L93">        LocalDate idadeInicialDate = LocalDate.parse(idadeInicial, formatter);</span>
+
+<span class="fc" id="L95">        long valorMinimo = 0;</span>
+<span class="fc" id="L96">        List&lt;Long&gt; sortedlist = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        for (Funcionario lista : listaFuncionario) {</span>
+<span class="fc" id="L99">            LocalDate month = lista.getDataNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();</span>
+<span class="fc" id="L100">            long daysBetween = ChronoUnit.DAYS.between(idadeInicialDate, month);</span>
+<span class="fc" id="L101">            Collections.sort(sortedlist);</span>
+<span class="fc" id="L102">            sortedlist.add(daysBetween);</span>
+
+<span class="fc" id="L104">            valorMinimo = sortedlist.get(0);</span>
+<span class="fc" id="L105">        }</span>
+
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        for (Funcionario lista : listaFuncionario) {</span>
+<span class="fc" id="L108">            LocalDate month = lista.getDataNascimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();</span>
+<span class="fc" id="L109">            long daysBetween = ChronoUnit.DAYS.between(idadeInicialDate, month);</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">            if (daysBetween == valorMinimo) {</span>
+<span class="fc" id="L111">                System.out.println(&quot;Funcionario(a) com maior idade: &quot; + lista.getNome() + &quot;, &quot; + sdf.format(lista.getDataNascimento()));</span>
+            }
+<span class="fc" id="L113">        }</span>
+<span class="fc" id="L114">    }</span>
+
+    public void listaFuncionariosOrdemAlfabetica() {
+<span class="fc" id="L117">        System.out.println(&quot;Funcionarios por Ordem Alfabetica:&quot;);</span>
+<span class="fc" id="L118">        Comparator&lt;String&gt; comp = (s1, s2) -&gt; s1.toUpperCase().compareTo(s2.toUpperCase());</span>
+
+<span class="fc" id="L120">        List&lt;String&gt; listaOrdemAlfabetica = listaFuncionario.stream()</span>
+<span class="fc" id="L121">                .map(p -&gt; p.getNome())</span>
+<span class="fc" id="L122">                .sorted(comp)</span>
+<span class="fc" id="L123">                .collect(Collectors.toList());</span>
+<span class="fc" id="L124">        listaOrdemAlfabetica.forEach(System.out::println);</span>
+<span class="fc" id="L125">    }</span>
+
+    public BigDecimal totalSalarioDosFuncionarios() {
+<span class="fc" id="L128">        BigDecimal somaSalarios = new BigDecimal(&quot;0&quot;);</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        for (Funcionario lista : listaFuncionario) {</span>
+<span class="fc" id="L130">            somaSalarios = somaSalarios.add(lista.getSalario());</span>
+<span class="fc" id="L131">        }</span>
+<span class="fc" id="L132">        return somaSalarios;</span>
+    }
+
+    public void listaQtdSalarioMinimoPorFuncionario() {
+<span class="fc" id="L136">        System.out.println(&quot;Lista de quantidade de salario minimo por funcionario.&quot;);</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        for (Funcionario lista : listaFuncionario) {</span>
+<span class="fc" id="L138">            System.out.println(&quot;O(a) Funcionario &quot; + lista.getNome() + &quot; recebe &quot;</span>
+<span class="fc" id="L139">                    + String.format(&quot;%.2f&quot;, lista.getSalario().</span>
+<span class="fc" id="L140">                            divide(new BigDecimal(&quot;1212&quot;), MathContext.DECIMAL128))</span>
+                    + &quot; salarios minimos&quot;);
+<span class="fc" id="L142">        }</span>
+<span class="fc" id="L143">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

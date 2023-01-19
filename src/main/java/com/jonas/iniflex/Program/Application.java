@@ -1,6 +1,5 @@
 package com.jonas.iniflex.Program;
 
-import com.jonas.iniflex.Entities.Funcionario;
 import com.jonas.iniflex.Services.Service;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -15,31 +14,20 @@ public class Application {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            Funcionario Maria = new Funcionario("Maria", sdf.parse("18/10/2000"), BigDecimal.valueOf(2009.44), "Operador");
-            Funcionario Joao = new Funcionario("Joao", sdf.parse("12/05/1990"), BigDecimal.valueOf(2284.38), "Operador");
-            Funcionario Caio = new Funcionario("Caio", sdf.parse("02/05/1961"), BigDecimal.valueOf(9836.14), "Coordenador");
-            Funcionario Miguel = new Funcionario("Miguel", sdf.parse("14/10/1988"), BigDecimal.valueOf(19119.88), "Diretor");
-            Funcionario Alice = new Funcionario("Alice", sdf.parse("05/01/1995"), BigDecimal.valueOf(2234.68), "Recepcionista");
-            Funcionario Heitor = new Funcionario("Heitor", sdf.parse("19/11/1999"), BigDecimal.valueOf(1582.72), "Operador");
-            Funcionario Arthur = new Funcionario("Arthur", sdf.parse("31/03/1993"), BigDecimal.valueOf(4071.84), "Contador");
-            Funcionario Laura = new Funcionario("Laura", sdf.parse("08/07/1994"), BigDecimal.valueOf(3017.45), "Gerente");
-            Funcionario Heloisa = new Funcionario("Heloisa", sdf.parse("24/05/2003"), BigDecimal.valueOf(1606.85), "Eletricista");
-            Funcionario Helena = new Funcionario("Helena", sdf.parse("02/09/1996"), BigDecimal.valueOf(2799.93), "Gerente");
-
             //3.1 ADD TODOS OS FUNCIONARIOS 
-            service.addFuncionario(Maria);
-            service.addFuncionario(Joao);
-            service.addFuncionario(Caio);
-            service.addFuncionario(Miguel);
-            service.addFuncionario(Alice);
-            service.addFuncionario(Heitor);
-            service.addFuncionario(Arthur);
-            service.addFuncionario(Laura);
-            service.addFuncionario(Heloisa);
-            service.addFuncionario(Helena);
+            service.addFuncionario("Maria", sdf.parse("18/10/2000"), BigDecimal.valueOf(2009.44), "Operador");
+            service.addFuncionario("Joao", sdf.parse("12/05/1990"), BigDecimal.valueOf(2284.38), "Operador");
+            service.addFuncionario("Caio", sdf.parse("02/05/1961"), BigDecimal.valueOf(9836.14), "Coordenador");
+            service.addFuncionario("Miguel", sdf.parse("14/10/1988"), BigDecimal.valueOf(19119.88), "Diretor");
+            service.addFuncionario("Alice", sdf.parse("05/01/1995"), BigDecimal.valueOf(2234.68), "Recepcionista");
+            service.addFuncionario("Heitor", sdf.parse("19/11/1999"), BigDecimal.valueOf(1582.72), "Operador");
+            service.addFuncionario("Arthur", sdf.parse("31/03/1993"), BigDecimal.valueOf(4071.84), "Contador");
+            service.addFuncionario("Laura", sdf.parse("08/07/1994"), BigDecimal.valueOf(3017.45), "Gerente");
+            service.addFuncionario("Heloisa", sdf.parse("24/05/2003"), BigDecimal.valueOf(1606.85), "Eletricista");
+            service.addFuncionario("Helena", sdf.parse("02/09/1996"), BigDecimal.valueOf(2799.93), "Gerente");
 
             //3.2 REMOVER FUNCIONARIO JOAO
-            service.removeFuncionario(Joao);
+            service.removeFuncionario("Joao");
 
             //3.3 IMPRESSAO LISTA
             service.listaTodosFuncionario();
