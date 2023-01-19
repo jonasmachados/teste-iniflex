@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.jonas.iniflex.Program.ApplicationTest" time="0.647" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.jonas.iniflex.Services.ServiceTest" time="0.42" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\Jonas\AppData\Local\Temp\surefire3277365971675245944\surefirebooter14748651592057288978.jar C:\Users\Jonas\AppData\Local\Temp\surefire3277365971675245944 2023-01-19T14-37-58_774-jvmRun1 surefire3949664956552834555tmp surefire_07854646938109256751tmp"/>
+    <property name="sun.java.command" value="C:\Users\Jonas\AppData\Local\Temp\surefire6850890798120545957\surefirebooter14672203358658964647.jar C:\Users\Jonas\AppData\Local\Temp\surefire6850890798120545957 2023-01-19T14-37-37_137-jvmRun1 surefire1891810798015257579tmp surefire_08445133008713922597tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="com.jonas.iniflex.Program.ApplicationTest"/>
+    <property name="test" value="com.jonas.iniflex.Services.ServiceTest"/>
     <property name="surefire.test.class.path" value="C:\Users\Jonas\Documents\NetBeansProjects\Iniflex\target\test-classes;C:\Users\Jonas\Documents\NetBeansProjects\Iniflex\target\classes;C:\Users\Jonas\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\Jonas\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Jonas\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Jonas\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\Jonas\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\Jonas\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\Jonas\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Jonas"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Jonas\AppData\Local\Temp\surefire3277365971675245944\surefirebooter14748651592057288978.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Jonas\AppData\Local\Temp\surefire6850890798120545957\surefirebooter14672203358658964647.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.1+9-18"/>
@@ -57,62 +57,43 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="testMain" classname="com.jonas.iniflex.Program.ApplicationTest" time="0.381">
+  <testcase name="whenFindListTodosFuncionarioThenReturnSuccess" classname="com.jonas.iniflex.Services.ServiceTest" time="0.174">
     <system-out><![CDATA[Lista de todos os Funcioanarios:
-Maria, nasceu em 18/10/2000, possui salário de 2.009,44, função Operador
-Caio, nasceu em 02/05/1961, possui salário de 9.836,14, função Coordenador
-Miguel, nasceu em 14/10/1988, possui salário de 19.119,88, função Diretor
-Alice, nasceu em 05/01/1995, possui salário de 2.234,68, função Recepcionista
-Heitor, nasceu em 19/11/1999, possui salário de 1.582,72, função Operador
-Arthur, nasceu em 31/03/1993, possui salário de 4.071,84, função Contador
-Laura, nasceu em 08/07/1994, possui salário de 3.017,45, função Gerente
-Heloisa, nasceu em 24/05/2003, possui salário de 1.606,85, função Eletricista
-Helena, nasceu em 02/09/1996, possui salário de 2.799,93, função Gerente
-
-***********************************
-Funcionários agrupados por função.
-Operador: [Maria, nasceu em 18/10/2000, possui salário de 2.210,38, função Operador, Heitor, nasceu em 19/11/1999, possui salário de 1.740,99, função Operador]
-Eletricista: [Heloisa, nasceu em 24/05/2003, possui salário de 1.767,54, função Eletricista]
-Recepcionista: [Alice, nasceu em 05/01/1995, possui salário de 2.458,15, função Recepcionista]
-Diretor: [Miguel, nasceu em 14/10/1988, possui salário de 21.031,87, função Diretor]
-Gerente: [Laura, nasceu em 08/07/1994, possui salário de 3.319,20, função Gerente, Helena, nasceu em 02/09/1996, possui salário de 3.079,92, função Gerente]
-Coordenador: [Caio, nasceu em 02/05/1961, possui salário de 10.819,75, função Coordenador]
-Contador: [Arthur, nasceu em 31/03/1993, possui salário de 4.479,02, função Contador]
-
-***********************************
-Aniversariantes dos meses outubro e dezembro
-Maria, nasceu em 18/10/2000, possui salário de 2.210,38, função Operador
-Miguel, nasceu em 14/10/1988, possui salário de 21.031,87, função Diretor
-
-***********************************
-Funcionario(a) com maior idade: Caio, 02/05/1961
-
-***********************************
-Funcionarios por Ordem Alfabetica:
-Alice
-Arthur
-Caio
-Heitor
-Helena
-Heloisa
-Laura
-Maria
-Miguel
-
-***********************************
-O total dos salarios dos funcionarios eh: 50.906,82 
-
-***********************************
-Lista de quantidade de salario minimo por funcionario.
-O(a) Funcionario Maria recebe 1,82 salarios minimos
-O(a) Funcionario Caio recebe 8,93 salarios minimos
-O(a) Funcionario Miguel recebe 17,35 salarios minimos
-O(a) Funcionario Alice recebe 2,03 salarios minimos
-O(a) Funcionario Heitor recebe 1,44 salarios minimos
-O(a) Funcionario Arthur recebe 3,70 salarios minimos
-O(a) Funcionario Laura recebe 2,74 salarios minimos
-O(a) Funcionario Heloisa recebe 1,46 salarios minimos
-O(a) Funcionario Helena recebe 2,54 salarios minimos
+Joao, nasceu em 12/05/1990, possui salário de 2.284,38, função Operador
+Fernando, nasceu em 20/03/1980, possui salário de 1.000,00, função Operador
+ParseException: Unparseable date: "15/06/1980"
+]]></system-out>
+  </testcase>
+  <testcase name="whenFindFuncionarioMaisVelhoThenReturnDadosFuncionarioMaisvelho" classname="com.jonas.iniflex.Services.ServiceTest" time="0.073">
+    <system-out><![CDATA[Funcionario(a) com maior idade: Joao, 12/05/1990
+]]></system-out>
+  </testcase>
+  <testcase name="whenAumentoSalarioTodosFuncionariosReturnListaComAumento" classname="com.jonas.iniflex.Services.ServiceTest" time="0.015"/>
+  <testcase name="whenFindListaQtdSalarioMinimoPorFuncionarioTheReturnListaSalarioMinimo" classname="com.jonas.iniflex.Services.ServiceTest" time="0.009">
+    <system-out><![CDATA[Lista de quantidade de salario minimo por funcionario.
+O(a) Funcionario Joao recebe 1,88 salarios minimos
+O(a) Funcionario Fernando recebe 0,83 salarios minimos
+]]></system-out>
+  </testcase>
+  <testcase name="whenFindListaFuncionariosOrdemAlfabeticaThenReturnSuccessList" classname="com.jonas.iniflex.Services.ServiceTest" time="0.005">
+    <system-out><![CDATA[Funcionarios por Ordem Alfabetica:
+Fernando
+Joao
+]]></system-out>
+  </testcase>
+  <testcase name="whenFindFuncionariosMapTheReturnSuccess" classname="com.jonas.iniflex.Services.ServiceTest" time="0.011">
+    <system-out><![CDATA[Funcionários agrupados por função.
+Operador: [Joao, nasceu em 12/05/1990, possui salário de 2.284,38, função Operador, Fernando, nasceu em 20/03/1980, possui salário de 1.000,00, função Operador]
+]]></system-out>
+  </testcase>
+  <testcase name="whenAddFuncionarioThenReturnSuccess" classname="com.jonas.iniflex.Services.ServiceTest" time="0.008">
+    <system-out><![CDATA[ParseException: Unparseable date: "15/06/1980"
+]]></system-out>
+  </testcase>
+  <testcase name="whenRemoveFuncionarioTheReturnSuccess" classname="com.jonas.iniflex.Services.ServiceTest" time="0.003"/>
+  <testcase name="whenTotalSalarioDosFuncionariosThenReturnSomaDosSalarios" classname="com.jonas.iniflex.Services.ServiceTest" time="0.003"/>
+  <testcase name="whenAniversariantesMes10E12theReturnListaAniversariantes" classname="com.jonas.iniflex.Services.ServiceTest" time="0.004">
+    <system-out><![CDATA[Aniversariantes dos meses outubro e dezembro
 ]]></system-out>
   </testcase>
 </testsuite>

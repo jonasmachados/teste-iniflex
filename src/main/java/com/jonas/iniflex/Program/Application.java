@@ -50,6 +50,7 @@ public class Application {
 
             //3.10 LISTA FUNCIONARIO ORDEM ALFABETICA
             service.listaFuncionariosOrdemAlfabetica();
+            System.out.println("\n***********************************");
 
             //3.11 TOTAL DOS SALARIOS DOS FUNCIONARIOS
             System.out.println("O total dos salarios dos funcionarios eh: " + String.

@@ -42,8 +42,8 @@ public class Service {
             if (listaFuncionario.get(i).getNome() == nome) {
                 listaFuncionario.remove(listaFuncionario.get(i));
             }
-
         }
+
         return listaFuncionario;
     }
 
