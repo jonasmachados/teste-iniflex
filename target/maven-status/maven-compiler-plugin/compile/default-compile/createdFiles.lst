@@ -1,3 +1,4 @@
 com\jonas\iniflex\Entities\Pessoa.class
 com\jonas\iniflex\Entities\Funcionario.class
 com\jonas\iniflex\Program\Application.class
+com\jonas\iniflex\Services\Service.class

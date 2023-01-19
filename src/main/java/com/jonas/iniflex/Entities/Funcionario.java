@@ -1,5 +1,7 @@
 package com.jonas.iniflex.Entities;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -7,16 +9,17 @@ import java.util.Objects;
 public class Funcionario extends Pessoa {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    DecimalFormat df = new DecimalFormat("#,##0.00");
 
-    private Double salario;
+    private BigDecimal salario;
     private String funcao;
 
-    public Funcionario(Double salario, String funcao) {
+    public Funcionario(BigDecimal salario, String funcao) {
         this.salario = salario;
         this.funcao = funcao;
     }
 
-    public Funcionario(String nome, Date dataNascimento, Double salario, String funcao) {
+    public Funcionario(String nome, Date dataNascimento, BigDecimal salario, String funcao) {
         super(nome, dataNascimento);
         this.salario = salario;
         this.funcao = funcao;
@@ -24,8 +27,8 @@ public class Funcionario extends Pessoa {
 
     @Override
     public String toString() {
-        return getNome();
-        
+        return getNome() + ", nasceu em " + sdf.format(getDataNascimento()) + ", possui salário de " + df.format(salario) + ", função " + funcao;
+
     }
 
     @Override
@@ -57,15 +60,11 @@ public class Funcionario extends Pessoa {
         return true;
     }
 
-    public double aumento10(double _10PorCento) {
-        return salario = salario + ((salario * 10) / 100);
-    }
-
-    public Double getSalario() {
+    public BigDecimal getSalario() {
         return salario;
     }
 
-    public void setSalario(Double salario) {
+    public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
 
